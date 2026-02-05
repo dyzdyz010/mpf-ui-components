@@ -11,7 +11,7 @@ find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick)
 qt_policy(SET QTP0001 NEW)
 qt_policy(SET QTP0004 NEW)
 
-# QML 文件
+# QML 文件 - 设置 alias 去掉 qml/ 前缀
 set(QML_FILES
     qml/MPFCard.qml
     qml/MPFButton.qml
@@ -21,6 +21,15 @@ set(QML_FILES
     qml/MPFTextField.qml
     qml/MPFLoadingIndicator.qml
 )
+
+# Flatten paths (remove qml/ prefix)
+set_source_files_properties(qml/MPFCard.qml PROPERTIES QT_RESOURCE_ALIAS MPFCard.qml)
+set_source_files_properties(qml/MPFButton.qml PROPERTIES QT_RESOURCE_ALIAS MPFButton.qml)
+set_source_files_properties(qml/MPFIconButton.qml PROPERTIES QT_RESOURCE_ALIAS MPFIconButton.qml)
+set_source_files_properties(qml/StatusBadge.qml PROPERTIES QT_RESOURCE_ALIAS StatusBadge.qml)
+set_source_files_properties(qml/MPFDialog.qml PROPERTIES QT_RESOURCE_ALIAS MPFDialog.qml)
+set_source_files_properties(qml/MPFTextField.qml PROPERTIES QT_RESOURCE_ALIAS MPFTextField.qml)
+set_source_files_properties(qml/MPFLoadingIndicator.qml PROPERTIES QT_RESOURCE_ALIAS MPFLoadingIndicator.qml)
 
 # 使用 qt_add_qml_module 创建带 C++ 后端的 QML 模块
 # 注意：QML_ELEMENT 类型的头文件需要能被直接 include
