@@ -27,6 +27,8 @@ set(QML_FILES
 qt_add_qml_module(mpf-ui-components
     URI MPF.Components
     VERSION 1.0
+    RESOURCE_PREFIX /
+    NO_RESOURCE_TARGET_PATH
     SOURCES
         src/ui_components_global.h
         src/color_helper.h
