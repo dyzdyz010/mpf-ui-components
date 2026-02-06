@@ -64,6 +64,11 @@ target_link_libraries(mpf-ui-components
 
 target_compile_definitions(mpf-ui-components PRIVATE MPF_UI_COMPONENTS_EXPORTS)
 
+# Static link CRT on MinGW to avoid cross-DLL heap issues
+if(MINGW)
+    target_link_options(mpf-ui-components PRIVATE -static-libgcc -static-libstdc++)
+endif()
+
 # Install C++ library and headers
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
